@@ -10,7 +10,9 @@ import { modal, confirmModal } from "@/utils/modal";
 import App from './App'
 import store from './store'
 import router from './router'
+import locale from 'element-ui/lib/locale/lang/en'
 
+Vue.use(ElementUI, { locale })
 
 import vueMiniPlayer from 'vue-mini-player'
 import 'vue-mini-player/lib/vue-mini-player.css'

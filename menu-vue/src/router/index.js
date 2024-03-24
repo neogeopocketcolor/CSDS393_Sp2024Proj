@@ -66,7 +66,19 @@ export let constantRoutes = [
       }
     ]
   },
-  
+  {
+    path: '/menu-add',
+    component: Layout,
+    hidden: true,
+    children: [
+      {
+        path: '',
+        name: 'AddMenu',
+        component: () => import('@/views/AddMenu'),
+        meta: { title: 'add recipe', icon: 'form' },
+      }
+    ]
+  },
   {
     path: '/user-info',
     component: Layout,

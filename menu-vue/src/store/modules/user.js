@@ -38,10 +38,12 @@ const actions = {
     return new Promise((resolve, reject) => {
       login(userInfo).then(response => {
         debugger
+        let userInfo1 = response.data;
+ 
 
-        commit('SET_USERID', userInfo.id)
-        commit('SET_NAME', userInfo.account)
-        setUser(userInfo)
+        commit('SET_USERID', userInfo1.id)
+        commit('SET_NAME', userInfo1.account)
+        setUser(userInfo1)
         resolve()
       }).catch(error => {
         reject(error)

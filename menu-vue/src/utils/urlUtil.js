@@ -9,7 +9,10 @@ export function spliceUrl(url, data) {
   //看原始url地址中开头是否带?，然后拼接处理好的参数
   return url += (url.indexOf('?') < 0 ? '?' : '') + getParam(data)
 }
-
+export function picPath(url) {
+  //看原始url地址中开头是否带?，然后拼接处理好的参数
+  return 'http://localhost:8081/imgs/' + url
+}
 /**
  * 传入对象返回url参数
  * @param {Object} data {a:1}
