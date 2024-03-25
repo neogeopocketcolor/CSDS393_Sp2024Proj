@@ -19,4 +19,4 @@ npm -v
 cd menu-vue
 npm run dev
 ```
-- Open the following [website](https://localhost:8088)
+- Open the following [website](https://localhost:8088) to start the demo of application 
