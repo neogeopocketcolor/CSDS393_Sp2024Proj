@@ -1,15 +1,15 @@
 
 server:
-  port: 8081
+  port: 8088
 
 
 spring:
   datasource:
     name: root
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://cloudim.club:3306/fjt_test?useUnicode=true&characterEncoding=UTF-8&useTimezone=true&serverTimezone=GMT%2b8
-    username: root
-    password: Winter@2019,,
+    url: jdbc:mysql://172.16.2.86:3306/fjt_test?useUnicode=true&characterEncoding=UTF-8&useTimezone=true&serverTimezone=GMT%2b8
+    username: devfocsdb3
+    password: devfocsdb3
     # 最大上传单个文件大小：默认1M
 
   servlet:

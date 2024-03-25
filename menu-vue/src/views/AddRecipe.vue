@@ -1,10 +1,10 @@
 <template>
     <div class="form-wrapper" v-loading="loading" element-loading-text="loading...">
         <el-form ref="form" :model="foodObj" label-width="130px"  label-suffix=":">
-             <el-form-item label="sort" > 
-               <el-select v-model="foodObj.sort" placeholder="请选择">
+             <el-form-item label="category" > 
+               <el-select v-model="foodObj.category" placeholder="please select">
                   <el-option
-                    v-for="item in footSorts"
+                    v-for="item in footCategorys"
                     :key="item.value"
                     :label="item.label"
                     :value="item.value">
@@ -17,8 +17,6 @@
             <el-form-item label="info" >
                 <el-input v-model="foodObj.info" placeholder="enter food info"></el-input>
             </el-form-item>
-
-
             <el-form-item label="icon" prop="icon">
               <div @click="uploadImage(0)">
                 <el-image :src="getImagePath(foodObj.icon)" >
@@ -28,14 +26,11 @@
                 </el-image>
                </div>
             </el-form-item>
-
-
-
             <el-form-item label="ingredients" >
                 <div class="ingredient-wrapper" v-for="(item,index) in foodObj.ingredients">
                     <el-input  v-model="item.name" placeholder="enter food desc"></el-input>
                     <el-input class="number-input"  v-model="item.number" placeholder="enter food desc"></el-input>
-                    <el-select v-model="item.unit" placeholder="请选择">
+                    <el-select v-model="item.unit" placeholder="please select">
                       <el-option
                     v-for="(item,index) in footUnits"
                     :key="item.value"
@@ -72,22 +67,11 @@
                   
                 </div>
             </el-form-item>
-
-        
-
             <div class="btn-wrapper">
                 <el-button @click="$router.go(-1) ">Cancel</el-button>
                 <el-button type="primary" @click="onSubmit">Save</el-button> 
             </div>
-
-
-
-
-
-
-            
         </el-form>
-
         <input accept="image/*"   style="height: 0;" ref="file" type="file" @change="fileChange"/>
     </div>
   </template>
@@ -96,40 +80,38 @@
 // import user from '@/store/modules/user';
 import request from '@/utils/request'
 import { spliceUrl, getFormData,picPath } from "@/utils/urlUtil";
-import { footSorts,footUnits } from "@/utils/enmu";
+import { footCategorys,footUnits } from "@/utils/enmu";
   
 export default {
-    name: 'AddMenu',
-
+    name: 'AddRecipe',
     data() {
         return {
             loading: false,
-            footSorts:footSorts,
+            footCategorys:footCategorys,
             footUnits:footUnits,
             foodObj: {
               name:'',
-              sort:'',
+              category:'',
               info:'',
               icon:'',
-              ingredients:[{name:'姜片',number:1,unit:'g'}],
-              practice:[{icon:'姜片',info:1}]
+              ingredients:[{name:'',number:'',unit:''}],
+              practice:[]
             },
-            imageUrl:'',
             uploadType:0,
             uploadIndex:0,
             rules: {
-               password: [
-                    { required: true, message: 'password is empty!' }
+              name: [
+                    { required: true, message: 'name is empty!' }
                 ],
-                nickName: [
-                    { required: true, message: 'nickName is empty!' },
+                category: [
+                    { required: true, message: 'category is empty!' },
               
                 ],
-                phone: [
-                    { required: true, message: 'phone is empty!' }
+                info: [
+                    { required: true, message: 'info is empty!' }
                 ],
-                hobby: [
-                    { required: true, message: 'hobby is empty!' }
+                icon: [
+                    { required: true, message: 'icon is empty!' }
                 ]
             }
   
@@ -177,15 +159,10 @@ export default {
         
         },
         getMenuData: async function (id) {
-            this.loading = true;
-            let params = {
-              id
-            }
-          let res = await request({
-                url: spliceUrl('/menu/load', params),
-                method: 'get'
-            }).catch(er=>-1);
-            this.loading = false;
+          this.loading = true;
+          let url = spliceUrl('recipe/load', {id});
+          let res = await request({url: url, method: 'get'}).catch(er=>-1);
+          this.loading = false;
           if(res == 1)return;
           let menu = res.data || {};
           menu.ingredients = JSON.parse(menu.ingredients);

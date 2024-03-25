@@ -1,5 +1,5 @@
-var defaultParams = { confirmButtonText: "确定", cancelButtonText: "取消" };
-export function modal(message, title = "温馨提示", params = {}) {
+var defaultParams = { confirmButtonText: "confirm", cancelButtonText: "cancel" };
+export function modal(message, title = "tip", params = {}) {
   for (var attr in defaultParams) {
     var defaultValue = defaultParams[attr];
     var value = params[attr];
@@ -11,7 +11,7 @@ export function modal(message, title = "温馨提示", params = {}) {
   params.dangerouslyUseHTMLString = true;
   return this.$confirm(message, title, params);
 }
-export function confirmModal(message, title = "温馨提示", params = {}) {
+export function confirmModal(message, title = "tip", params = {}) {
   for (var attr in defaultParams) {
     var defaultValue = defaultParams[attr];
     var value = params[attr];

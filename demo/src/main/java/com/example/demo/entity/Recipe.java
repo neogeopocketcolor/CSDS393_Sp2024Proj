@@ -10,7 +10,7 @@ import java.io.Serializable;
  * @date 2024-03-24
  */
 @Data
-public class Menu implements Serializable {
+public class Recipe implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -27,7 +27,7 @@ public class Menu implements Serializable {
     /**
      * 0 1 2 3 4
      */
-    private Integer sort;
+    private Integer category;
 
     /**
      * image
@@ -37,7 +37,7 @@ public class Menu implements Serializable {
     /**
      * departShortName
      */
-    private String createTime;
+    private String createdTime;
 
     /**
      * user_id
@@ -60,7 +60,7 @@ public class Menu implements Serializable {
     private String ingredients;
 
 
-    public Menu() {
+    public Recipe() {
     }
 
 

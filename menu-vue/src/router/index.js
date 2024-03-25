@@ -42,43 +42,57 @@ export let constantRoutes = [
   },
  
   {
-    path: '/bank-list',
+    path: '/recipe-book',
     component: Layout,
     children: [
       {
         path: '',
-        name: 'BankList',
-        component: () => import('@/views/MenuList'),
+        name: 'RecipeBook',
+        component: () => import('@/views/RecipeBook'),
         meta: { title: 'recipe book', icon: 'form' }
       }
     ]
   },
   
   {
-    path: '/mine-menu-list',
+    path: '/my-recipe',
     component: Layout,
     children: [
       {
         path: '',
-        name: 'QuestionList',
-        component: () => import('@/views/MineMenuList'),
+        name: 'MyRecipe',
+        component: () => import('@/views/MyRecipe'),
         meta: { title: 'my recipe', icon: 'form' },
       }
     ]
   },
   {
-    path: '/menu-add',
+    path: '/recipe-add',
     component: Layout,
     hidden: true,
     children: [
       {
         path: '',
-        name: 'AddMenu',
-        component: () => import('@/views/AddMenu'),
+        name: 'AddRecipe',
+        component: () => import('@/views/AddRecipe'),
         meta: { title: 'add recipe', icon: 'form' },
       }
     ]
   },
+  {
+    path: '/recipe-detail',
+    component: Layout,
+    hidden: true,
+    children: [
+      {
+        path: '',
+        name: 'DetailRecipe',
+        component: () => import('@/views/DetailRecipe'),
+        meta: { title: 'recipe detail', icon: 'form' },
+      }
+    ]
+  },
+  
   {
     path: '/user-info',
     component: Layout,

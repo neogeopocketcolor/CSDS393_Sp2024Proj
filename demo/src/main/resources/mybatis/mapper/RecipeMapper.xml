@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.demo.mapper.MenuMapper">
+<mapper namespace="com.example.demo.mapper.RecipeMapper">
 
-    <resultMap id="BaseResultMap" type="com.example.demo.entity.Menu" >
+    <resultMap id="BaseResultMap" type="com.example.demo.entity.Recipe" >
         <result column="id" property="id" />
         <result column="name" property="name" />
-        <result column="sort" property="sort" />
+        <result column="category" property="category" />
         <result column="icon" property="icon" />
-        <result column="createTime" property="createTime" />
+        <result column="created_time" property="createdTime" />
         <result column="user_id" property="userId" />
         <result column="practice" property="practice" />
         <result column="info" property="info" />
@@ -18,29 +18,29 @@
     <sql id="Base_Column_List">
                 id,
                 name,
-                sort,
+                category,
                 icon,
-                createTime,
+                created_time,
                 user_id,
                 practice,
                 info,
                 ingredients
     </sql>
 
-    <insert id="insert" useGeneratedKeys="true" keyColumn="id" keyProperty="id" parameterType="com.example.demo.entity.Menu">
-        INSERT INTO menu
+    <insert id="insert" useGeneratedKeys="true" keyColumn="id" keyProperty="id" parameterType="com.example.demo.entity.Recipe">
+        INSERT INTO recipe
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="null != name and '' != name">
                 name,
             </if>
-            <if test="null != sort ">
-                sort,
+            <if test="null != category ">
+                category,
             </if>
             <if test="null != icon and '' != icon">
                 icon,
             </if>
-            <if test="null != createTime and '' != createTime">
-                createTime,
+            <if test="null != createdTime and '' != createdTime">
+                created_time,
             </if>
             <if test="null != userId ">
                 user_id,
@@ -59,14 +59,14 @@
             <if test="null != name and '' != name">
                 #{name},
             </if>
-            <if test="null != sort ">
-                #{sort},
+            <if test="null != category ">
+                #{category},
             </if>
             <if test="null != icon and '' != icon">
                 #{icon},
             </if>
-            <if test="null != createTime and '' != createTime">
-                #{createTime},
+            <if test="null != createdTime and '' != createdTime">
+                #{createdTime},
             </if>
             <if test="null != userId ">
                 #{userId},
@@ -84,17 +84,17 @@
     </insert>
 
     <delete id="delete" >
-        DELETE FROM menu
+        DELETE FROM recipe
         WHERE id = #{id}
     </delete>
 
-    <update id="update" parameterType="com.example.demo.entity.Menu">
-        UPDATE menu
+    <update id="update" parameterType="com.example.demo.entity.Recipe">
+        UPDATE recipe
         <set>
             <if test="null != name and '' != name">name = #{name},</if>
-            <if test="null != sort ">sort = #{sort},</if>
+            <if test="null != category ">category = #{category},</if>
             <if test="null != icon and '' != icon">icon = #{icon},</if>
-            <if test="null != createTime and '' != createTime">createTime = #{createTime},</if>
+            <if test="null != createdTime and '' != createdTime">created_time = #{createdTime},</if>
             <if test="null != userId ">user_id = #{userId},</if>
             <if test="null != practice and '' != practice">practice = #{practice},</if>
             <if test="null != desc and '' != desc">desc = #{desc},</if>
@@ -106,19 +106,27 @@
 
     <select id="load" resultMap="BaseResultMap">
         SELECT <include refid="Base_Column_List" />
-        FROM menu
+        FROM recipe
         WHERE id = #{id}
     </select>
 
     <select id="pageList" resultMap="BaseResultMap">
         SELECT <include refid="Base_Column_List" />
-        FROM menu
+        FROM recipe where 1= 1
+        <if test="null != userId and '' != userId">
+           and user_id = #{userId}
+        </if>
+
         LIMIT #{offset}, #{pagesize}
     </select>
 
     <select id="pageListCount" resultType="java.lang.Integer">
-        SELECT count(1)
-        FROM menu
+        SELECT count(1) FROM recipe
+        where 1= 1
+        <if test="null != userId and '' != userId">
+            and user_id = #{userId}
+        </if>
+
     </select>
 
 </mapper>

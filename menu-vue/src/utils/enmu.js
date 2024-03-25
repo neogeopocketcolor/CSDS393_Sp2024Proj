@@ -1,17 +1,16 @@
-export const footSorts = [
-    {label:'家常菜',value:0},
-    {label:'主食',value:1},
-    {label:'汤类',value:2},
-    {label:'早餐',value:3},
-    {label:'健康饮食',value:4}
+export const footCategorys = [
+    {label:'home cooking',value:0},
+    {label:'staple food',value:1},
+    {label:'soup type',value:2},
+    {label:'breakfast',value:3},
+    {label:'healthy diet',value:4}
 ];
 export const footUnits = [
-    {label:'条',value:0},
-    {label:'汤匙',value:1},
-    {label:'茶匙',value:2},
-    {label:'小块',value:3},
-    {label:'大块',value:4},
-    {label:'颗',value:5},
-    {label:'g',value:6},
-    {label:'适量',value:7}
+    {label:'medium-sized',value:0},
+    {label:'spoon',value:1},
+    {label:'teaspoon',value:2},
+    {label:'small pieces',value:3},
+    {label:'big pieces',value:4},
+    {label:'g',value:5},
+    {label:'appropriate',value:6}
 ];
