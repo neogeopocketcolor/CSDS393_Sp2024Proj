@@ -47,7 +47,7 @@ git clone https://github.com/neogeopocketcolor/CSDS393_Sp2024Proj
 
 3. **Start the Backend:**
 
-   Ensure the backend server is running. Follow the backend setup documentation (not provided here) to get it started.
+   Ensure the backend server is running. Run the backend file in IDEA to get it started.
 
 4. **Run the Frontend Application:**
 
