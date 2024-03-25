@@ -43,15 +43,15 @@ git clone https://github.com/neogeopocketcolor/CSDS393_Sp2024Proj
 ```
 2. **Set Up the Database:**
 
-Before starting the application, ensure your SQL server is up and running. Run the SQL statements found in `user.sql` to set up the database schema and initial data required by the application.
+   Before starting the application, ensure your SQL server is up and running. Run the SQL statements found in `user.sql` to set up the database schema and initial data required by the application.
 
 3. **Start the Backend:**
 
-Ensure the backend server is running. Follow the backend setup documentation (not provided here) to get it started.
+   Ensure the backend server is running. Follow the backend setup documentation (not provided here) to get it started.
 
 4. **Run the Frontend Application:**
 
-Navigate to the root directory and start the development server by running:
+   Navigate to the root directory and start the development server by running:
 
 ```bash
 cd menu-vue
@@ -60,4 +60,4 @@ npm run dev
 
 5. **Access the Application:**
 
-Once the frontend development server is up, open your web browser and visit [https://localhost:8088](https://localhost:8088) to start the demo of the application.
+   Once the frontend development server is up, open your web browser and visit [https://localhost:8088](https://localhost:8088) to start the demo of the application.
