@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.RecipeMapper">
+
+    <resultMap id="BaseResultMap" type="com.example.demo.entity.Recipe" >
+        <result column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="category" property="category" />
+        <result column="icon" property="icon" />
+        <result column="created_time" property="createdTime" />
+        <result column="user_id" property="userId" />
+        <result column="practice" property="practice" />
+        <result column="info" property="info" />
+        <result column="ingredients" property="ingredients" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+                id,
+                name,
+                category,
+                icon,
+                created_time,
+                user_id,
+                practice,
+                info,
+                ingredients
+    </sql>
+
+    <insert id="insert" useGeneratedKeys="true" keyColumn="id" keyProperty="id" parameterType="com.example.demo.entity.Recipe">
+        INSERT INTO recipe
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="null != name and '' != name">
+                name,
+            </if>
+            <if test="null != category ">
+                category,
+            </if>
+            <if test="null != icon and '' != icon">
+                icon,
+            </if>
+            <if test="null != createdTime and '' != createdTime">
+                created_time,
+            </if>
+            <if test="null != userId ">
+                user_id,
+            </if>
+            <if test="null != practice and '' != practice">
+                practice,
+            </if>
+            <if test="null != info and '' != info">
+                info,
+            </if>
+            <if test="null != ingredients and '' != ingredients">
+                ingredients
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="null != name and '' != name">
+                #{name},
+            </if>
+            <if test="null != category ">
+                #{category},
+            </if>
+            <if test="null != icon and '' != icon">
+                #{icon},
+            </if>
+            <if test="null != createdTime and '' != createdTime">
+                #{createdTime},
+            </if>
+            <if test="null != userId ">
+                #{userId},
+            </if>
+            <if test="null != practice and '' != practice">
+                #{practice},
+            </if>
+            <if test="null != info and '' != info">
+                #{info},
+            </if>
+            <if test="null != ingredients and '' != ingredients">
+                #{ingredients}
+            </if>
+        </trim>
+    </insert>
+
+    <delete id="delete" >
+        DELETE FROM recipe
+        WHERE id = #{id}
+    </delete>
+
+    <update id="update" parameterType="com.example.demo.entity.Recipe">
+        UPDATE recipe
+        <set>
+            <if test="null != name and '' != name">name = #{name},</if>
+            <if test="null != category ">category = #{category},</if>
+            <if test="null != icon and '' != icon">icon = #{icon},</if>
+            <if test="null != createdTime and '' != createdTime">created_time = #{createdTime},</if>
+            <if test="null != userId ">user_id = #{userId},</if>
+            <if test="null != practice and '' != practice">practice = #{practice},</if>
+            <if test="null != info and '' != info">info = #{info},</if>
+            <if test="null != ingredients and '' != ingredients">ingredients = #{ingredients}</if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+
+    <select id="load" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List" />
+        FROM recipe
+        WHERE id = #{id}
+    </select>
+
+    <select id="pageList" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List" />
+        FROM recipe where 1= 1
+        <if test="null != userId and '' != userId">
+           and user_id = #{userId}
+        </if>
+
+        LIMIT #{offset}, #{pagesize}
+    </select>
+
+    <select id="pageListCount" resultType="java.lang.Integer">
+        SELECT count(1) FROM recipe
+        where 1= 1
+        <if test="null != userId and '' != userId">
+            and user_id = #{userId}
+        </if>
+
+    </select>
+
+</mapper>

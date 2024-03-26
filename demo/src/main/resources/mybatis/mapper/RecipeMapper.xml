@@ -97,7 +97,7 @@
             <if test="null != createdTime and '' != createdTime">created_time = #{createdTime},</if>
             <if test="null != userId ">user_id = #{userId},</if>
             <if test="null != practice and '' != practice">practice = #{practice},</if>
-            <if test="null != desc and '' != desc">desc = #{desc},</if>
+            <if test="null != info and '' != info">info = #{info},</if>
             <if test="null != ingredients and '' != ingredients">ingredients = #{ingredients}</if>
         </set>
         WHERE id = #{id}

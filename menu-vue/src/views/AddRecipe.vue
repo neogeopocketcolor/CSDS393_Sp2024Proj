@@ -146,7 +146,7 @@ export default {
             params.ingredients = JSON.stringify(params.ingredients);
             params.practice = JSON.stringify(params.practice);
             params.userId = this.$store.getters.userId;
-            let url = this.foodObj.id == undefined?'menu/add':'menu/update';
+            let url = this.foodObj.id == undefined?'recipe/add':'recipe/update';
           let res = await request({
                 url: url,
                 method: 'post',
@@ -196,13 +196,13 @@ export default {
 
         },
         addIngredient:function(){
-          this.foodObj.ingredients.push({name:'姜片',number:1,unit:'g'});
+          this.foodObj.ingredients.push({name:'',number:'',unit:''});
         },
         minusIngredient:function(index){
           this.foodObj.ingredients.splice(index, 1)
         },
         addSpractice:function(){
-          this.foodObj.practice.push({icon:'姜片',info:1});
+          this.foodObj.practice.push({icon:'',info:''});
         },
         minusSpractice:function(index){
           this.foodObj.practice.splice(index, 1)

@@ -41,7 +41,7 @@
      
       <div style="width:100%;margin-bottom:30px;display: flex;justify-content: space-between;">
         <el-button :loading="loading" type="primary" style="width:100%;" @click.native.prevent="handleLogin">login</el-button>
-        <el-button :loading="loading" type="primary" style="width:100%;" @click.native.prevent="handleRegist">go to regist</el-button>
+        <el-button  type="primary" style="width:100%;" @click.native.prevent="handleRegist">go to regist</el-button>
       </div>
       
 

@@ -87,9 +87,10 @@ export default {
       },
       getUserInfo: function () {
           this.loading = true;
-         let account1 = JSON.parse(sessionStorage.getItem("vue_admin_template_user"))
+         let user = JSON.parse(sessionStorage.getItem("vue_admin_template_user"))
+         debugger
           let params = {
-              account: account1,
+              account: user.account,
           }
           request({
               url: spliceUrl('/user/getUserByAccount', params),
